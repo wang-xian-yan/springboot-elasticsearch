@@ -3,6 +3,8 @@ package org.wangxian.search.pojo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
  * @author xian
@@ -11,7 +13,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Document(indexName = "person", type = "person", shards = 1, replicas = 0, refreshInterval = "-1")
 public class Person {
+    @Id
+    private Long id;
+
     private String name;
 
     private int age;
@@ -19,5 +25,6 @@ public class Person {
     private String sex;
 
     private String address;
+
 
 }
